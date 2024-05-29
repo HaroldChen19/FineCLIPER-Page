@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos">
+  <meta name="keywords" content="video representation, LLM, video understanding, structral prompting">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./prj_static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">
+            VideoTree: Adaptive Tree-based Video <br>
+Representation for LLM Reasoning on Long Videos</h1>
+<div class="is-size-5 publication-authors">
+  <!-- 第一排 -->
+  <div class="author-row">
+    <span class="author-block"><a href="https://ziyangw2000.github.io/">Ziyang Wang*</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://yui010206.github.io/">Shoubin Yu*</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://esteng.github.io/">Elias Stengel-Eskin*</a></span>
+  </div>
+  <!-- 第二排 -->
+  <div class="author-row">
+    <span class="author-block"><a href="https://jaehong31.github.io/">Jaehong Yoon</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://klauscc.github.io/">Feng Cheng</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://www.gedasbertasius.com/">Gedas Bertasius</a></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a></span> 
+  </div>
+</div>
+<div class="is-size-5 publication-authors">
+  <span class="author-block">University of North Carolina, Chapel Hill</span>
+</div>
+<div class="is-size-5 publication-authors">
+  <span class="author-block">*: equal contribution</span>
+</div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Ziyang412/VideoTree"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+            </div>
+
+        </div>      
+      </div>
+    </div>  
+    <section class="hero is-small">
+      <div class="body">
+        <div class="container">
+          <center>
+            <img src="./images/teaser.png" width="100%">
+          </center>
+          <div class="content has-text-justified" style="margin: auto; width: 100%;">
+              <b>Figure 1: Overview of VideoTree for LLM reasoning on long videos</b>. VideoTree helps to extract
+              query-related information in long videos in a coarse-to-fine style. We first cluster videos via their
+              visual embeddings, and then build a tree structure in a query-adaptive manner. Lastly, the LLM takes
+              selected keyframe captions in the tree to conduct long video reasoning
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Video-language understanding tasks have historically focused on short video clips,
+            often struggling with the complexities of long-form video understanding. Recently,
+            many long video-language understanding approaches have taken advantage of the
+            reasoning capabilities of Large Language Models (LLMs) to perform long video
+            question answering, transforming videos into densely sampled frame captions, and
+            asking LLMs to respond to text queries over captions. However, the frames used for
+            captioning are often redundant and contain irrelevant information, making dense
+            sampling inefficient, and ignoring the fact that video question-answering requires
+            varying levels of granularity, with some video segments being highly relevant to
+            the question (and hence needing more fine-grained detail) while others being less
+            relevant. Thus, these LLM-based approaches are prone to missing information
+            and operate on large numbers of irrelevant captions, lowering both performance
+            and efficiency. To address these shortcomings, we introduce VideoTree, a query-adaptive and hierarchical framework for long-video understanding with LLMs.
+            Specifically, VideoTree dynamically extracts query-related information from the
+            input video and builds a tree-based video representation for LLM reasoning. First,
+            VideoTree adaptively selects frames for captioning by clustering frames based on
+            their visual features and scoring clusters based on their relevance to the query. We
+            iterate this process until enough query-related keyframes are extracted. Second,
+            it organizes visual clusters into a query-adaptive and hierarchical tree structure;
+            the structure of the tree encodes varying levels of granularity, with higher (deeper)
+            resolution on relevant segments. Finally, VideoTree produces an answer to each
+            question by traversing the tree’s keyframes and passing their captions to an LLM
+            answering model, which answers the query. Our experiments show that our training-
+            free adaptive method improves both reasoning accuracy and efficiency compared
+            to existing methods: VideoTree achieves a 7.0%, 2.2%, and 2.7% improvement
+            in accuracy over existing methods on the popular EgoSchema, NExT-QA, and
+            IntentQA benchmarks, respectively, while reducing inference time by 40%.  </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<br>
+<br>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Method</h2>
+
+      <center><img src="./images/method.png" alt="Teaser" width="100%"></center>
+
+      <div class="content has-text-justified">
+        <b>Figure 2: A detailed view of VideoTree</b>. To construct the tree structure, we begin with Adaptive
+        Breadth Expansion (Step 1), which dynamically extracts query-related key information by considering
+        both video and question inputs. Then, starting from the highly relevant root nodes, we explore deeper
+        into the tree branches by Relevance-guided Depth Expansion (Step 2), re-clustering at each level
+        to capture finer visual cues. Finally, we gather the selected nodes (keyframes), caption them, and
+        arrange them in temporal order for LLM reasoning (Step 3).
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+<br>
+<br>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Results</h2>
+
+    </div>
+  </div>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <div class="content has-text-justified">
+        <b>Table 1</b>: Comparison with other methods on EgoSchema, NExT-QA, and IntentQA datasets. We
+        compare our VideoTree framework with three types of existing works, including video transformer
+        models, open-source LLM-based models, and proprietary LLM-based models.</div>
+    <center><img src="./images/table1.png" alt="Teaser" width="100%"></center>
+    <div class="content has-text-justified">
+    We demonstrate the effectiveness of VideoTree by evaluating it on three standard long video question answering (LVQA) datasets: EgoSchema, which focuses on egocentric long-form video-language understanding; NExT-QA, a widely-used video question answering benchmark featuring videos that average 44 seconds in length; IntentQA, an LVQA dataset focused on reasoning about people’s intent in long videos.
+    Across these tasks, VideoTree significantly improves accuracy compared to state-of-the-art LLM-based approaches, achieving an absolute accuracy improvement of 7.0% on EgoSchema benchmark, 2.2% on NExT-QA, and 2.7% on IntentQA.
+  </div>
+  </div>
+  </div>
+
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Abalation Study</h2>
+
+    <center><img src="./images/ablation.png" alt="Teaser" width="100%"></center>
+    <center><img src="./images/ablation2.png" alt="Teaser" width="100%"></center>
+
+    <div class="content has-text-justified">
+      we provide a detailed analysis of our VideoTree framework. All quantitative analyses are conducted on the validation subset of the EgoSchema dataset. First, we analyze the tradeoff between efficiency and effectiveness, comparing VideoTree to the LLoVi baseline.
+      Here we show that our method has better efficiency and performance across all settings. We then verify the effectiveness of the query-adaptive hierarchical video representation by comparing against different alternative representations. Finally, we visualize the output trees from VideoTree and show the clusters VideoTree chooses to expand, qualitatively supporting its quantitative gains. </div>
+  </div>
+  </div>
+
+
+  </div>
+</section>
+
+<br>
+<br>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Qualitative Analysis</h2>
+
+<center><img src="./images/vis1.png" alt="Teaser" width="100%"></center>
+<center><img src="./images/vis2.png" alt="Teaser" width="100%"></center>
+      <div class="content has-text-justified">
+ <p>
+We visualize qualitative results from VideoTree. Specifically, we show the keyframes
+  and their captions extracted by our adaptive tree representation given a video query. This example
+  is drawn from EgoSchema, and shows the query format, which consists of a query and multiple
+  choice answers. With the proposed VideoTree strategy, we can split a complex multi-scene video
+  (e.g.cleaning house across rooms) into several key scenes via visual clustering and determine the most
+  query-relevant scene via the relevance score. We then can obtain more fine-grained visual cues by
+  descending into each relevant cluster (Levels 2 and 3 in Figure 5 top). For example “C opens a washing
+  machine” is deemed highly relevant to the question, which asks about the sequence of events. At the
+  same time, frames like “C moves around” are deemed irrelevant to the query and not expanded. In
+  the end, VideoTree shows a dynamic ability to select relevant segments and can answer the given
+  question correctly with only 50% of the baseline’s 32 input captions. The baseline (fixed uniformly
+  sampling) fails to correctly answer the question, sampling a large number of redundant and irrelevant
+  frames.
+</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{wang2024videotree,
+  author    = {Ziyang Wang, Shoubin Yu, Elias Stengel-Eskin, Jaehong Yoon, Feng Cheng, Gedas Bertasius, Mohit Bansal},
+  title     = {VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos},
+  journal   = {arxiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align:right;font-size:small;">
+          <a href="https://github.com/nerfies/nerfies.github.io">
+            This guy makes a nice webpage.
+          </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
