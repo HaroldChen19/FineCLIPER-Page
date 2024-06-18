@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos">
-  <meta name="keywords" content="video representation, LLM, video understanding, structral prompting">
+        content="FineCLIPER: Multi-modal Fine-grained CLIP for Dynamic Facial Expression Recognition with AdaptERs">
+  <meta name="keywords" content="multi-modal, dynamic facial expression recognition, video understanding">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos</title>
+  <title>FineCLIPER: Multi-modal Fine-grained CLIP for Dynamic Facial Expression Recognition with AdaptERs</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -18,7 +18,9 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./prj_static/images/favicon.svg"> -->
+  <link href="static/personal.jpg" rel="icon" media="(prefers-color-scheme: light)" />
+  <link href="static/personal.jpg" rel="icon" media="(prefers-color-scheme: dark)" />
+  <!-- <link rel="icon" href="/home/haodong/FineCLIPER/PersonaGen-Page/static/personal.jpg"> -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -37,34 +39,39 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-3 publication-title">
-            VideoTree: Adaptive Tree-based Video <br>
-Representation for LLM Reasoning on Long Videos</h1>
+            FineCLIPER: Multi-modal Fine-grained CLIP <br>
+            for Dynamic Facial Expression Recognition with AdaptERs</h1>
 <div class="is-size-5 publication-authors">
   <!-- 第一排 -->
   <div class="author-row">
-    <span class="author-block"><a href="https://ziyangw2000.github.io/">Ziyang Wang*</a></span> &nbsp;&nbsp;&nbsp;
-    <span class="author-block"><a href="https://yui010206.github.io/">Shoubin Yu*</a></span> &nbsp;&nbsp;&nbsp;
-    <span class="author-block"><a href="https://esteng.github.io/">Elias Stengel-Eskin*</a></span>
+    <span class="author-block"><a href="https://haroldchen19.github.io/">Haodong Chen</a><sup>1</sup></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://github.com/JethroJames">Haojian Huang</a><sup>2</sup></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://scholar.google.com/citations?user=48A9z_UAAAAJ&hl=en">Junhao Dong</a><sup>3</sup></span>&nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://github.com/DuNGEOnmassster">Mingzhe Zheng</a><sup>1</sup></span> &nbsp;&nbsp;&nbsp;
+    <span class="author-block"><a href="https://scholar.google.com/citations?hl=en&user=amxDSLoAAAAJ&view_op=list_works&sortby=pubdate">Dian Shao</a><sup>&dagger;</sup><sup>1</sup></span> &nbsp;&nbsp;&nbsp;
   </div>
-  <!-- 第二排 -->
+  <!-- 第二排
   <div class="author-row">
     <span class="author-block"><a href="https://jaehong31.github.io/">Jaehong Yoon</a></span> &nbsp;&nbsp;&nbsp;
     <span class="author-block"><a href="https://klauscc.github.io/">Feng Cheng</a></span> &nbsp;&nbsp;&nbsp;
     <span class="author-block"><a href="https://www.gedasbertasius.com/">Gedas Bertasius</a></span> &nbsp;&nbsp;&nbsp;
     <span class="author-block"><a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a></span> 
-  </div>
+  </div> -->
 </div>
 <div class="is-size-5 publication-authors">
-  <span class="author-block">University of North Carolina, Chapel Hill</span>
+  <span class="author-block"><sup>&dagger;</sup>Corresponding Author</span>
 </div>
 <div class="is-size-5 publication-authors">
-  <span class="author-block">*: equal contribution</span>
+  <span class="author-block"><sup>1</sup>Northwestern Polytechnical University</span>
+</div>
+<div class="is-size-5 publication-authors">
+  <span class="author-block"><sup>2</sup>The University of Hong Kong, <sup>3</sup>Nanyang Technological University</span>
 </div>
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2405.19209/"
+                <a href="https://arxiv.org/abs/2405.07472"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -89,7 +96,7 @@ Representation for LLM Reasoning on Long Videos</h1>
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming soon)</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -102,13 +109,12 @@ Representation for LLM Reasoning on Long Videos</h1>
       <div class="body">
         <div class="container">
           <center>
-            <img src="./images/teaser.png" width="100%">
+            <img src="./image/Fig1.png" width="50%">
           </center>
           <div class="content has-text-justified" style="margin: auto; width: 100%;">
-              <b>Figure 1: Overview of VideoTree for LLM reasoning on long videos</b>. VideoTree helps to extract
-              query-related information in long videos in a coarse-to-fine style. We first cluster videos via their
-              visual embeddings, and then build a tree structure in a query-adaptive manner. Lastly, the LLM takes
-              selected keyframe captions in the tree to conduct long video reasoning
+            <center>
+              <b>Figure 1: Frameworks for Dynamic Facial Expression Recognition</b>.
+            </center>
           </div>
         </div>
       </div>
@@ -125,33 +131,14 @@ Representation for LLM Reasoning on Long Videos</h1>
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Video-language understanding tasks have historically focused on short video clips,
-            often struggling with the complexities of long-form video understanding. Recently,
-            many long video-language understanding approaches have taken advantage of the
-            reasoning capabilities of Large Language Models (LLMs) to perform long video
-            question answering, transforming videos into densely sampled frame captions, and
-            asking LLMs to respond to text queries over captions. However, the frames used for
-            captioning are often redundant and contain irrelevant information, making dense
-            sampling inefficient, and ignoring the fact that video question-answering requires
-            varying levels of granularity, with some video segments being highly relevant to
-            the question (and hence needing more fine-grained detail) while others being less
-            relevant. Thus, these LLM-based approaches are prone to missing information
-            and operate on large numbers of irrelevant captions, lowering both performance
-            and efficiency. To address these shortcomings, we introduce VideoTree, a query-adaptive and hierarchical framework for long-video understanding with LLMs.
-            Specifically, VideoTree dynamically extracts query-related information from the
-            input video and builds a tree-based video representation for LLM reasoning. First,
-            VideoTree adaptively selects frames for captioning by clustering frames based on
-            their visual features and scoring clusters based on their relevance to the query. We
-            iterate this process until enough query-related keyframes are extracted. Second,
-            it organizes visual clusters into a query-adaptive and hierarchical tree structure;
-            the structure of the tree encodes varying levels of granularity, with higher (deeper)
-            resolution on relevant segments. Finally, VideoTree produces an answer to each
-            question by traversing the tree’s keyframes and passing their captions to an LLM
-            answering model, which answers the query. Our experiments show that our training-
-            free adaptive method improves both reasoning accuracy and efficiency compared
-            to existing methods: VideoTree achieves a 7.0%, 2.2%, and 2.7% improvement
-            in accuracy over existing methods on the popular EgoSchema, NExT-QA, and
-            IntentQA benchmarks, respectively, while reducing inference time by 40%.  </p>
+            Dynamic Facial Expression Recognition (DFER) is crucial for understanding human behavior.
+            However, current methods exhibit limited performance mainly due to the scarcity of high-quality data, the insufficient utilization of facial dynamics, and the ambiguity of expression semantics, etc.
+            To this end, we propose a novel framework, named Multi-modal Fine-grained CLIP for Dynamic Facial Expression Recognition with AdaptERs (FineCLIPER), incorporating the following novel designs:    
+            1) To better distinguish between similar facial expressions, we extend the class labels to textual descriptions from both positive and negative aspects, and obtain supervision by calculating the cross-modal similarity based on the CLIP model;
+            2) Our FineCLIPER adopts a hierarchical manner to effectively mine useful cues from DFE videos. Specifically, besides directly embedding video frames as input (low semantic level),
+            we propose to extract the face segmentation masks and landmarks based on each frame (middle semantic level) and utilize the Multi-modal Large Language Model (MLLM) to further generate detailed descriptions of facial changes across frames with designed prompts (high semantic level).
+            Additionally, we also adopt Parameter-Efficient Fine-Tuning (PEFT) to enable efficient adaptation of large pre-trained models (i.e., CLIP) for this task.
+            Our FineCLIPER achieves SOTA performance on the DFEW, FERV39k, and MAFW datasets in both supervised and zero-shot settings with few tunable parameters. Analysis and ablation studies further validate its effectiveness.  </p>
         </div>
       </div>
     </div>
@@ -168,16 +155,17 @@ Representation for LLM Reasoning on Long Videos</h1>
       <div class="column is-four-fifths">
     <h2 class="title is-3">Method</h2>
 
-      <center><img src="./images/method.png" alt="Teaser" width="100%"></center>
+      <center><img src="./image/framework.png" alt="Teaser" width="100%"></center>
 
       <div class="content has-text-justified">
-        <b>Figure 2: A detailed view of VideoTree</b>. To construct the tree structure, we begin with Adaptive
-        Breadth Expansion (Step 1), which dynamically extracts query-related key information by considering
-        both video and question inputs. Then, starting from the highly relevant root nodes, we explore deeper
-        into the tree branches by Relevance-guided Depth Expansion (Step 2), re-clustering at each level
-        to capture finer visual cues. Finally, we gather the selected nodes (keyframes), caption them, and
-        arrange them in temporal order for LLM reasoning (Step 3).
+        <b>Figure 2: Overview of FineCLIPER</b>. The framework can be divided into three main components: Label Encoder, Multi-Modal Encoders, and Similarity Calculation. The Label Encoder augments labels using PN descriptors, followed by PN adaptors within text encoder; The Multi-Modal Encoders handle hierarchical information mined from low semantic levels to high semantic levels of human face; The Similarity Calculation module further integrates and computes the similarities of the representations obtained earlier via contrastive learning.
       </div>
+
+      <!-- <center><img src="./image/textgen.png" alt="Teaser" width="60%"></center>
+
+      <div class="content has-text-justified">
+        <center><b>Figure 3: Fine-grained Text Generation and Refinement</b>.</center>
+      </div> -->
 
     </div>
   </div>
@@ -191,21 +179,27 @@ Representation for LLM Reasoning on Long Videos</h1>
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-    <h2 class="title is-3">Results</h2>
+    <h2 class="title is-3">Main Results</h2>
 
     </div>
   </div>
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
       <div class="content has-text-justified">
-        <b>Table 1</b>: Comparison with other methods on EgoSchema, NExT-QA, and IntentQA datasets. We
-        compare our VideoTree framework with three types of existing works, including video transformer
-        models, open-source LLM-based models, and proprietary LLM-based models.</div>
-    <center><img src="./images/table1.png" alt="Teaser" width="100%"></center>
-    <div class="content has-text-justified">
+        <b>Table 1</b>: Comparisons of our FineCLIPER with the state-of-the-art Supervised DFER methods on DFEW, FERV39k, and MAFW. 
+        <sup>&ast;</sup>: FineCLIPER with face parsing and landmarks modalities; <sup>&dagger;</sup>: FineCLIPER with fine-grained text modality.
+        The best results are highlighted in Bold, and the second-best Underlined.</div>
+        <center><img src="./image/Tab1.png" alt="Teaser" width="100%"></center>
+        <div class="content has-text-justified">
+        <b>Table 2</b>: Comparative analyses of accuracy across various emotion categories: FineCLIPER vs. other approaches on DFEW.</div>
+        <center><img src="./image/Tab2.png" alt="Teaser" width="100%"></center>
+        <div class="content has-text-justified">
+        <b>Table 3</b>: Comparison with state-of-the-art Zero-Shot DFER methods. <sup>&dagger;</sup>: FineCLIPER with fine-grained text modality.</div>
+        <center><img src="./image/Tab3.png" alt="Teaser" width="100%"></center>
+    <!-- <div class="content has-text-justified">
     We demonstrate the effectiveness of VideoTree by evaluating it on three standard long video question answering (LVQA) datasets: EgoSchema, which focuses on egocentric long-form video-language understanding; NExT-QA, a widely-used video question answering benchmark featuring videos that average 44 seconds in length; IntentQA, an LVQA dataset focused on reasoning about people’s intent in long videos.
     Across these tasks, VideoTree significantly improves accuracy compared to state-of-the-art LLM-based approaches, achieving an absolute accuracy improvement of 7.0% on EgoSchema benchmark, 2.2% on NExT-QA, and 2.7% on IntentQA.
-  </div>
+  </div> -->
   </div>
   </div>
 
@@ -214,23 +208,57 @@ Representation for LLM Reasoning on Long Videos</h1>
     <div class="column is-four-fifths">
       <h2 class="title is-3">Abalation Study</h2>
 
-    <center><img src="./images/ablation.png" alt="Teaser" width="100%"></center>
-    <center><img src="./images/ablation2.png" alt="Teaser" width="100%"></center>
+    <center><img src="./image/ablation_tab.png" alt="Teaser" width="100%"></center>
+    <!-- <center><img src="./images/ablation2.png" alt="Teaser" width="100%"></center> -->
 
-    <div class="content has-text-justified">
-      we provide a detailed analysis of our VideoTree framework. All quantitative analyses are conducted on the validation subset of the EgoSchema dataset. First, we analyze the tradeoff between efficiency and effectiveness, comparing VideoTree to the LLoVi baseline.
-      Here we show that our method has better efficiency and performance across all settings. We then verify the effectiveness of the query-adaptive hierarchical video representation by comparing against different alternative representations. Finally, we visualize the output trees from VideoTree and show the clusters VideoTree chooses to expand, qualitatively supporting its quantitative gains. </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <b>Figure 3</b>: Visualizations of class-wise cosine similarity values between video and text embeddings in DFEW, where the positive value is in green and the negative one is in red.
+        </div>
+          <center><img src="./image/ablation_neg.png" alt="Teaser" width="60%"></center>
+          <div class="content has-text-justified">
+          <b>Figure 4</b>: Comparison between our adaptive weighting strategy and fixed weights on the DFEW dataset, where the x-axis represents the weights of video features.
+        </div>
+          <center><img src="./image/ablation_weight.png" alt="Teaser" width="100%"></center>
+          <div class="content has-text-justified">
+            We present a detailed analysis of our FineCLIPER framework, providing comprehensive quantitative and qualitative evaluations that further validate the superiority of FineCLIPER.
+          </div>
+    </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Qualitative Analysis</h2>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <b>Figure 5</b>: Parameter-Performance comparison on the DFEW testing set. The bubble size indicates the model size.
+        </div>
+          <center><img src="./image/model_eff.png" alt="Teaser" width="60%"></center>
+          <div class="content has-text-justified">
+          <b>Figure 6</b>: Attention visualizations for DFEW w.r.t. two ground-truth expression labels: 'Happiness' (Top) and 'Surprise' (Bottom).
+        </div>
+          <center><img src="./image/atten.png" alt="Teaser" width="100%"></center>
+          <div class="content has-text-justified">
+            <center><b>Figure 7</b>: Examples of the generated text and the refined text.</center>
+          </div>
+            <center><img src="./image/fine_text.png" alt="Teaser" width="100%"></center>
+    </div>
+    </div>
   </div>
   </div>
 
 
-  </div>
 </section>
 
 <br>
 <br>
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -258,17 +286,17 @@ We visualize qualitative results from VideoTree. Specifically, we show the keyfr
     </div>
   </div>
   </div>
-</section>
+</section> -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{wang2024videotree,
-  author    = {Ziyang Wang, Shoubin Yu, Elias Stengel-Eskin, Jaehong Yoon, Feng Cheng, Gedas Bertasius, Mohit Bansal},
-  title     = {VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos},
-  journal   = {arxiv},
-  year      = {2024},
-}</code></pre>
+    <pre><code>@article{chen2024gaussianvton,
+      title={GaussianVTON: 3D Human Virtual Try-ON via Multi-Stage Gaussian Splatting Editing with Image Prompting},
+      author={Chen, Haodong and Huang, Yongle and Huang, Haojian and Ge, Xiangsheng and Shao, Dian},
+      journal={arXiv preprint arXiv:2405.07472},
+      year={2024}
+    }</code></pre>
   </div>
 </section>
 
@@ -278,16 +306,20 @@ We visualize qualitative results from VideoTree. Specifically, we show the keyfr
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p style="text-align:right;font-size:small;">
-          <a href="https://github.com/nerfies/nerfies.github.io">
-            This guy makes a nice webpage.
-          </a>
-          </p>
+          This website is constructed using the source code by <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>, we are grateful for their contributions.
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+  <footer class="container">
+    <br><hr>
+    <div class="row" style="text-align: center">
+      © 2024 Haodong Chen
+    </div>
+  </footer>
+  
 
 </body>
 </html>

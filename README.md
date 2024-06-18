@@ -1,2 +1,1 @@
-# videotree2024.github.io
-VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos
+FineCLIPER: Multi-modal Fine-grained CLIP for Dynamic Facial Expression Recognition with AdaptERs
